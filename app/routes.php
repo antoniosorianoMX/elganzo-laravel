@@ -60,8 +60,8 @@ Route::post('login', 'UserController@postLogin');
 });*/
 
 Route::get('nombre', function(){
-	$user= User::find(1);
-	return $user->name;
+	$depto= Depto::find(2);
+	return $depto->departamento;
 });
 
 Route::get('agregar', function(){
@@ -101,14 +101,16 @@ Route::get('agregar', function(){
 
 Route::get('nombre_all', function(){
 
-	/*$users= User::all();
-	var_dump($users);
+	$users= User::all();
+	//var_dump($users);
 	foreach ($users as $user){
-		echo $user->nombre;
+		echo $user->name;
+		echo '</br>';
+		echo $user->depto->departamento;
+		echo '</br>';
 	}
-	$depto= Depto::find(1);
-	return $depto->departamento;
-	echo "<br />";*/
+	
+	/*
 	$depto= Depto::find(1);
 	echo $depto->departamento;
 	echo '<br/>';
@@ -119,20 +121,20 @@ Route::get('nombre_all', function(){
 		echo $user->username;
     }
 	echo "<br/";
-	
+	*/
 });
 
+//obtiene los nombre de todos del departamento seleccionado
 Route::get('/{id}', function($id){
-	$user = User::find($id);
-	echo $user->name;
-	echo "<br />";
-	echo $user->depto->departamento;
-    echo "<br />";
 	
-	echo "<br/";
-	/*$depto = Depto::find($id);
+	$depto= Depto::find($id);
 	echo $depto->departamento;
-	echo "<br />";
-	echo $depto->users->name;
-    echo "<br />";*/
+	echo '<br/>';
+	foreach($depto->users as $user){
+		echo '<br/>';
+		echo $user->name;
+		echo '<br/>';
+		echo $user->username;
+    }
+	echo "<br/";
 });

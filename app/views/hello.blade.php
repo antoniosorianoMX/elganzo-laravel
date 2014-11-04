@@ -37,6 +37,7 @@
 	<div class="welcome">
 		<h1>You have arrived. Felicidades.</h1>
 		<h1>Bienvenido {{ Auth::user()->name; }}</h1>
+		
 		<a href="logout">Cerrar sesión.</a>
 		
 		

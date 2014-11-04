@@ -19,7 +19,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
-
+	protected $fillable = array('name','username','id_departamento', 'id_puesto', 'password');
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -27,15 +27,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+	
+	public $errors;
 	/*el método isValid, que acepta como parámetro la data enviada
 	por el usuario. Dentro fíjense que defino un array con las 
 	reglas de validación “rules”.*/
 	public function isValid($data){
 		 
 		$rules= array(
-			'name'	=>	'required|alpha_num|min:4|max:50',
-			'username'	=>	'required|alpha_num|min:4|max:20',
-			'password'	=>	'required|alpha_num|min:2'
+			'name'				=>	'required|min:4|max:50',
+			'username'			=>	'required',
+			'password'			=>	'required|min:5',
+			'id_departamento'	=>	'required',
+			'id_puesto'			=>	'required'
 			
 		);
 		
@@ -43,6 +47,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		
 		//devuelve TRUE si la validación pasa
 		if($validator->passes()){
+		
 			return true;
 		}
 		/*si falla entonces almacenamos en la propiedad $errors 

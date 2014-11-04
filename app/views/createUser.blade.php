@@ -29,24 +29,28 @@
                 {{ Form::text('username', Input::old('username'), array('class' => 'form-control','placeholder'=>'usuario')); }}
 
 				<!--  -->
-				<span class="error">{{ $errors->first('departamento')}}
+				<span class="error">{{ $errors->first('id_departamento')}}
 				</span>	
                 <!--{{ Form::text('departamento', Input::old('departamento'), array('class' => 'form-control','placeholder'=>'departamento')); }}-->
 				
 				{{ Form::label('lbldepartamento', 'DEPARTAMENTO') }}
-				{{ Form::select('departamento', array(
+				{{ Form::select('id_departamento', array(
 				'DEPARTAMENTO' => array(
-				'sistemas' => 'sistemas',
-				'gerencia' => 'gerencia',
-				'seguridad' => 'seguridad',
-				'contraloria' => 'contraloria')				
-				), 'contraloria'); }}
-				
+				'2' => 'sistemas',
+				'1' => 'gerencia')				
+				), 2); }}
+				</br>
 				<!--  -->
-				<span class="error">{{ $errors->first('puesto')}}
-				</span>	
-                {{ Form::text('puesto', Input::old('puesto'), array('class' => 'form-control','placeholder'=>'puesto')); }}
-
+				<span class="error">{{ $errors->first('id_puesto')}}
+				</span>
+				{{ Form::label('lblpuesto', 'PUESTO') }}
+				{{ Form::select('id_puesto', array(
+				'GERENCIA' => array(
+				'1' => 'subgerencia',
+				'2' => 'subsubgerencia')
+				), 2); }}
+				
+                
 				
                 <!--{{ Form::label('contraseña', 'Contraseña') }}-->
 				<span class="error">{{ $errors->first('password')}}

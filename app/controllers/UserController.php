@@ -50,8 +50,7 @@ class UserController extends BaseController {
 
 	/* Muestra el formulario de login mostrando un mensaje de que cerró sesión.
      */
-    public function logOut()
-    {
+    public function logOut(){
         Session::flush();
         //return 'session cerrada';
 		
