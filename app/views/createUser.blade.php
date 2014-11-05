@@ -36,8 +36,9 @@
 				{{ Form::label('lbldepartamento', 'DEPARTAMENTO') }}
 				{{ Form::select('id_departamento', array(
 				'DEPARTAMENTO' => array(
-				'2' => 'sistemas',
-				'1' => 'gerencia')				
+				'1' => 'Gerencia',
+				'2' => 'Sistemas',
+				'3' => 'Contraloria',)				
 				), 2); }}
 				</br>
 				<!--  -->
@@ -47,8 +48,11 @@
 				{{ Form::select('id_puesto', array(
 				'GERENCIA' => array(
 				'1' => 'subgerencia',
-				'2' => 'subsubgerencia')
-				), 2); }}
+				'2' => 'subsubgerencia'),
+				'SISTEMAS' => array(
+				'21' => 'Gerente sistemas',
+				'22' => 'Asistente sistemas')
+				), 21); }}
 				
                 
 				
