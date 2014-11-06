@@ -47,18 +47,18 @@
         <div class="navbar-collapse collapse" style="height: 1px;">
           <ul class="nav navbar-nav">
             <li class="active"><a href="./Starter Template for Bootstrap_files/Starter Template for Bootstrap.html">Home</a></li>
-            <li><a href="/create">crear</a></li>
+            <li><a href="">Acerca de...</a></li>
 			<li class="dropdown">
 				<a aria-expanded="false" href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido {{ Auth::user()->name; }} <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-					<li><a href="/logout">Cerrar sesión.</a></li>
+					<li><a href="logout">Cerrar sesión.</a></li>
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li class="divider"></li>
                     
                   </ul>
-			</li>
+			</li> 
 		  </ul>
         </div><!--/.nav-collapse -->
       </div>

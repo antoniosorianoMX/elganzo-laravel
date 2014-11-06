@@ -13,17 +13,22 @@
 
 
 //Pagina de inicio de la pagina --Todos pueden acceder.
-Route::get('/', function(){
+/*Route::get('/', function(){
 	return View::make('index');
-});
+});*/
 
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function(){
+
+	Route::get('/inicio', function(){
+		return View::make('index');
+	});
+	
     // Esta será nuestra ruta de bienvenida.
-    Route::get('inicio', function()
+    /*Route::get('inicio', function()
     {
         return View::make('hello');
-    });
+    });*/
     // Esta ruta nos servirá para cerrar sesión.
    Route::get('logout', 'UserController@logOut');
 });
@@ -36,9 +41,9 @@ Route::get('create','UserController@showCreateUser');
 // Validamos los datos que se guardaran.
 Route::post('create','UserController@postCreateUser');
 
-Route::get('login', 'UserController@showLogin');
+Route::get('/', 'UserController@showLogin');
 
-Route::post('login', 'UserController@postLogin');
+Route::post('/', 'UserController@postLogin');
 
 
 /*Route::post('login', function(){
@@ -58,12 +63,23 @@ Route::post('login', 'UserController@postLogin');
 	//$error = $validador->messages();
 	return Redirect::to('login')->withErrors($validador);
 });*/
-
+Route::get('all_puestos', function(){
+	$puestos= Puesto::all();
+	foreach($puestos as $puesto){
+	echo $puesto->puesto;
+	echo '</br>';
+	}
+	
+});
 Route::get('nombre', function(){
 	$depto= Depto::find(2);
 	return $depto->departamento;
 });
 
+//ejemplo de filtro
+Route::get('hola', array('before' => 'cumpleanos:0/11',function(){
+	return View::make('createUser');
+}));
 Route::get('agregar', function(){
 	/*$user=new User;
 	$user->name= 'Francisco Mendez Perez';
@@ -87,7 +103,7 @@ Route::get('agregar', function(){
 	
 	$depto= new Depto;
 	$depto->departamento='Sistemas';
-	$depto->save();*/
+	$depto->save();
 	
 	$user=new User;
 	$user->name= 'Alejandra Ramos Perez';
@@ -97,21 +113,34 @@ Route::get('agregar', function(){
 	$user->password='juiklop';
 	$user->save();
 	
+	
+	// Fueron agregados a tabla puestos
+	$puesto= new Puesto();
+	$puesto->puesto='subgerencia';
+	$puesto->save();
+	
+	$puesto= new Puesto();
+	$puesto->puesto='subsubgerencia';
+	$puesto->save();*/
 });
 
 Route::get('nombre_all', function(){
 
-	$users= User::all();
+	/*$users= User::all();
 	//var_dump($users);
 	foreach ($users as $user){
 		echo $user->name;
 		echo '</br>';
 		echo $user->depto->departamento;
 		echo '</br>';
+	}*/
+	$users = User::all();
+	foreach ($users as $user) {
+	echo $user->name;
+	echo '</br>';
 	}
 	
-	/*
-	$depto= Depto::find(1);
+	/*$depto= Depto::find(1);
 	echo $depto->departamento;
 	echo '<br/>';
 	foreach($depto->users as $user){
@@ -120,8 +149,8 @@ Route::get('nombre_all', function(){
 		echo '<br/>';
 		echo $user->username;
     }
-	echo "<br/";
-	*/
+	echo "<br/";*/
+	
 });
 
 //obtiene los nombre de todos del departamento seleccionado

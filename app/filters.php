@@ -12,7 +12,7 @@
 */
 
 App::before(function($request)
-{
+{          
 	//
 });
 
@@ -39,11 +39,11 @@ Route::filter('auth', function()
 	{
 		if (Request::ajax())
 		{
-			return Response::make('Unauthorized', 401);
+			return Response::make('Unauthsssorized', 401);
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('/');
 		}
 	}
 });
@@ -88,3 +88,9 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('cumpleanos', function($routa, $peticion, $fecha){
+	if (date('d/m') == $fecha) {
+		return View::make('index');
+	}});

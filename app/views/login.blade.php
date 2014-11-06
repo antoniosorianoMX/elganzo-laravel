@@ -6,7 +6,7 @@
 		{{ HTML::style('bootstrap-3.2.0-dist/css/bootstrap.min.css'); }}
     </head>
 <body>
-	@include('cabecera')
+
 	
 	 <div class="container">
             <!--<div class="panel panel-default">-->
@@ -15,7 +15,7 @@
                     @if(Session::has('mensaje_error'))
                         <div class="alert alert-danger">{{ Session::get('mensaje_error') }}</div>
                     @endif
-                    {{ Form::open(array('url' => '/login')) }}
+                    {{ Form::open(array('url' => '/')) }}
                         <h2 class="form-signin-heading">Iniciar sesión</h2>
                         
                             <!--{{ Form::label('usuario', 'Nombre de usuario') }}-->

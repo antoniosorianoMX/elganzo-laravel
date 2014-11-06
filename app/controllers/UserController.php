@@ -9,6 +9,7 @@ class UserController extends BaseController {
             return Redirect::to('inicio');
         }
         // Mostramos la vista login.blade.php (Recordemos que .blade.php se omite.)
+		
         return View::make('login');
     }
 	
@@ -39,10 +40,10 @@ class UserController extends BaseController {
         if(Auth::attempt($userdata, Input::get('rememberme', 0)))
         {
             // De ser datos válidos nos mandara a la bienvenida
-            return Redirect::to('inicio');
+            return Redirect::to('/inicio');
         }
         // En caso de que la autenticación haya fallado manda un mensaje al formulario de login y también regresamos los valores enviados con withInput().
-        return Redirect::to('login')
+        return Redirect::to('/')
                     ->with('mensaje_error', 'Tus datos son incorrectos')
                     ->withInput();
 		
@@ -54,7 +55,7 @@ class UserController extends BaseController {
         Session::flush();
         //return 'session cerrada';
 		
-		return Redirect::to('login')
+		return Redirect::to('/')
                     ->with('mensaje_error', 'Tu sesión ha sido cerrada.');
     }
 
